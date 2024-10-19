@@ -11,7 +11,7 @@ app = Flask(__name__)
 # HerokuのPostgreSQLデータベースURLを設定（環境変数を使用して安全に取得可能）
 # app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "postgres://udeh3ob4qehaoq:pf6aec7f90ddbfe0023612e8fbaf30a2ca0264155ff950f5fce8713e358f07124@c97r84s7psuajm.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d543itvghq5f5j"
+    "postgresql://udeh3ob4qehaoq:pf6aec7f90ddbfe0023612e8fbaf30a2ca0264155ff950f5fce8713e358f07124@c97r84s7psuajm.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d543itvghq5f5j"
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
