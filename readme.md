@@ -38,10 +38,20 @@ from dotenv import load_dotenv
 # .envファイルの環境変数をロード
 load_dotenv()
 
+# 環境変数からそれぞれの要素を取得
+username = os.getenv('DB_USERNAME')
+password = os.getenv('DB_PASSWORD')
+host = os.getenv('DB_HOST')
+port = os.getenv('DB_PORT')
+dbname = os.getenv('DB_NAME')
+
+# それらを結合して DATABASE_URL を作成
+database_url = f"postgresql://{username}:{password}@{host}:{port}/{dbname}"
+
 app = Flask(__name__)
 
 # HerokuのPostgreSQLデータベースURLを設定（環境変数を使用して安全に取得可能）
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -143,7 +153,7 @@ https://k-sasaking.net/programing/heroku-postgres-install/
 `URI`を下記に入れ、ターミナルで`Heroku CLI`を実行。
 HerokuのPostgreSQLに直接アクセスすることができる
 
->`URI`は`postgres://User:Password@Host:Port/Database`に以下５つを組み入れたもの。
+>`URI`は`postgresql://User:Password@Host:Port/Database`に以下５つを組み入れたもの。
 
 >`User` `Password` `Host` `Port` `Database`
 
