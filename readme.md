@@ -33,6 +33,7 @@ touch .env
 import os
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
 
 # .envファイルの環境変数をロード
 load_dotenv()
